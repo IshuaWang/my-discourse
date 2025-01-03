@@ -49,8 +49,8 @@ RUN apt-get autoremove --purge -y curl && \
     apt-get update && apt-get upgrade -y && \
     apt-get clean && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 RUN find / -perm /6000 -type f -exec chmod a-s {} \; || true
-# RUN /opt/bitnami/ruby/bin/gem install --force bundler -v '< 2'
-RUN /opt/bitnami/ruby/bin/gem install bundler
+RUN /opt/bitnami/ruby/bin/gem install --force bundler -v '< 2'
+# RUN /opt/bitnami/ruby/bin/gem install bundler
 
 COPY rootfs /
 RUN /opt/bitnami/scripts/discourse/postunpack.sh
