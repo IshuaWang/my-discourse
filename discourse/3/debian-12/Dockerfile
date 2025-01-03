@@ -30,7 +30,7 @@ RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
     COMPONENTS=( \
       "python-3.13.1-0-linux-${OS_ARCH}-debian-12" \
       "wait-for-port-1.0.8-8-linux-${OS_ARCH}-debian-12" \
-      "ruby-3.3.6-0-linux-${OS_ARCH}-debian-12" \
+      "ruby-3.2.6-0-linux-${OS_ARCH}-debian-12" \
       "postgresql-client-17.2.0-0-linux-${OS_ARCH}-debian-12" \
       "node-18.20.5-1-linux-${OS_ARCH}-debian-12" \
       "brotli-1.1.0-4-linux-${OS_ARCH}-debian-12" \
@@ -49,7 +49,8 @@ RUN apt-get autoremove --purge -y curl && \
     apt-get update && apt-get upgrade -y && \
     apt-get clean && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 RUN find / -perm /6000 -type f -exec chmod a-s {} \; || true
-RUN /opt/bitnami/ruby/bin/gem install --force bundler -v '< 2'
+# RUN /opt/bitnami/ruby/bin/gem install --force bundler -v '< 2'
+RUN /opt/bitnami/ruby/bin/gem install bundler
 
 COPY rootfs /
 RUN /opt/bitnami/scripts/discourse/postunpack.sh
