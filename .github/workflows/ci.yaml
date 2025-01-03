@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
         run:
-          working-directory: discourse/3/debian-12/
+          working-directory: discourse/3/debian-12
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
