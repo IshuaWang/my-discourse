@@ -9,12 +9,14 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_TOKEN }}
-            
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -28,4 +30,4 @@ jobs:
           file: ./discourse/3/debian-12/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: xuanist/discourse:3.3.3
+          tags: yisim/discourse:3.3.3
